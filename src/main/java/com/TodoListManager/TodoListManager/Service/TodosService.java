@@ -31,6 +31,10 @@ public class TodosService {
         return todosRepositry.getAllTodos();
     } //Todos Retrieval
 
+    public Todos getTodosById(Integer todosId){
+        Todos todos = todosRepositry.getTodosById(todosId);
+        return todos;
+    }
 
     public void updateTodos(Todos todos) {
         Todos todosUpdate = new Todos();
@@ -40,9 +44,7 @@ public class TodosService {
     } //Todos Update
 
     public void deleteTodos(Integer id) {
-        Todos todosUpdate = todosRepositry.findById(id).get();
-        todosUpdate.setDescription("Description");
-        todosRepositry.save(todosUpdate);
-    }
+        todosRepositry.deleteById(id);
+    }//Todos Delete
 
 }

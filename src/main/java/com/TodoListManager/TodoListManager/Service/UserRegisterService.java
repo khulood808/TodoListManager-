@@ -1,10 +1,13 @@
 package com.TodoListManager.TodoListManager.Service;
 
+import com.TodoListManager.TodoListManager.Model.Todos;
 import com.TodoListManager.TodoListManager.Model.UserRegister;
 import com.TodoListManager.TodoListManager.Repositry.TodosRepositry;
 import com.TodoListManager.TodoListManager.Repositry.UserRegisterRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserRegisterService {
@@ -19,4 +22,9 @@ public class UserRegisterService {
         userRegisterRepositry.save(create);
         return "Created Successfully";
     }
+
+    public List<UserRegister> getAllUser() {
+
+        return userRegisterRepositry.getAllUser();
+    } //Todos Retrieval
 }

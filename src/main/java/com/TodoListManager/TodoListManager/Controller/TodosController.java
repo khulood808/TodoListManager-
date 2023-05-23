@@ -22,18 +22,25 @@ public class TodosController {
             return "Todos creation Failed";   //Todos Creation
         }
         return "Todos created Successfully";
-    }
+    }//Todos Creation
+
 
 
     @RequestMapping(value = "getAllTodos", method = RequestMethod.GET)
     public List<Todos> getAllTodos() {
         List<Todos> todos = todosService.getAllTodos();
         return todos;
-    }  //Todos Retrieval
+    }//Todos Retrieval (All todos)
 
+
+    @RequestMapping(value = "getTodosById", method = RequestMethod.GET)
+    public Todos getTodosById(@RequestParam Integer todosId){
+        Todos todos = todosService.getTodosById(todosId);
+        return todos;
+    }//Todos Retrieval (Single todos)
 
     @RequestMapping(value = "updateTodos", method = RequestMethod.POST)
-    public String updateTodos() {
+    public String updateTodos(@RequestBody Todos todos) {
         try {
             todosService.updateTodos(todos);
         } catch (Exception e) {
@@ -42,14 +49,15 @@ public class TodosController {
         return "Todos List Updated Successfully";
     } //Todos Update
 
+
     @RequestMapping(value = "deleteTodos", method = RequestMethod.POST)
-    public String deleteTodos(@RequestParam Todos todos) {
+    public String deleteTodos(Integer id) {
         try {
-            todosService.deleteTodos(todos.getId());
-        } catch (Exception e) {
-            return "Todos List Update Failed";
+            todosService.deleteTodos(id);
+            return "Todos Deleted Successfully";
+        }catch (Exception e){
+            return "Todos Deleted Failed";
         }
-        return "Todos List Updated Successfully";
-    } //Todos Delete
+    }//Todos Delete
 
 }

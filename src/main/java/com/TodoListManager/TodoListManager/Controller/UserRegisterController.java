@@ -2,11 +2,14 @@ package com.TodoListManager.TodoListManager.Controller;
 
 
 
+import com.TodoListManager.TodoListManager.Model.Todos;
 import com.TodoListManager.TodoListManager.Model.UserRegister;
 import com.TodoListManager.TodoListManager.Service.UserRegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "UserRegister")
@@ -24,5 +27,11 @@ public class UserRegisterController {
         }
         return "Account created Successfully";
     }
+
+    @RequestMapping(value = "getAllUser", method = RequestMethod.GET)
+    public List<UserRegister> getAllUser() {
+        List<UserRegister> userRegisterList = userRegisterService.getAllUser();
+        return userRegisterList;
+    }//Todos Retrieval (All todos)
 
 }

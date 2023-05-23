@@ -18,6 +18,9 @@ public interface TodosRepositry extends JpaRepository<Todos,Integer> {
     @Query("Select u from Todos u")
     List<Todos> getAllTodos();
 
+    @Query("SELECT t from Todos t where t.id =:todosId")
+    Todos getTodosById(@Param("todosId")Integer id);
+
 
 
 }

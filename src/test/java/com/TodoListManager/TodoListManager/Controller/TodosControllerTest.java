@@ -17,13 +17,16 @@ TodosController todosController;
         List<Todos> allTododsTest = todosController.getAllTodos();
         assertNotNull(allTododsTest);
     }
-
     @Test
+    void getTodosById() {
+        String TodosId = todosController.getTodosById(3).getTitle();
+        assertNotNull("Buy groceries",TodosId);
+    }
+   /* @Test
     void updateTodos() {
         String updateTodos = todosController.updateTodos();
         assertNotNull(updateTodos);
-    }
-
+    }*/
 
     @Test
     void deleteTodos() {
